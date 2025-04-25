@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Clock } from "lucide-react"
+import { Clock, ExternalLink } from "lucide-react"
+
+export type JobSource = "RNDJOB" | "병역일터" | "both"
 
 export type JobType = {
   id: number
@@ -12,6 +14,8 @@ export type JobType = {
   updatedAt: string
   daysLeft: number
   isUrgent?: boolean
+  source: JobSource
+  url?: string
 }
 
 interface JobCardProps {
@@ -19,6 +23,34 @@ interface JobCardProps {
 }
 
 export default function JobCard({ job }: JobCardProps) {
+  // 소스에 따른 배지 색상 설정
+  const getSourceBadgeStyle = (source: JobSource) => {
+    switch (source) {
+      case "RNDJOB":
+        return "bg-blue-100 text-blue-800 border-blue-200"
+      case "병역일터":
+        return "bg-green-100 text-green-800 border-green-200"
+      case "both":
+        return "bg-purple-100 text-purple-800 border-purple-200"
+      default:
+        return ""
+    }
+  }
+
+  // 소스에 따른 배지 텍스트
+  const getSourceText = (source: JobSource) => {
+    switch (source) {
+      case "RNDJOB":
+        return "이공계인력중개센터"
+      case "병역일터":
+        return "산업지원 병역일터"
+      case "both":
+        return "복수 출처"
+      default:
+        return ""
+    }
+  }
+
   return (
     <Card className="w-64 md:w-72 bg-white rounded-10 shadow-sm hover:shadow-lg transition duration-300 h-full">
       <div className="relative">
@@ -56,12 +88,32 @@ export default function JobCard({ job }: JobCardProps) {
           ))}
         </div>
 
+        {/* 출처 정보 추가 */}
+        <div className="mb-3">
+          <Badge variant="outline" className={getSourceBadgeStyle(job.source)}>
+            {getSourceText(job.source)}
+          </Badge>
+        </div>
+
         <div className="flex items-center justify-between text-xs text-gray-500">
           <div className="flex items-center">
             <Clock className="h-3 w-3 mr-1" />
             <span>업데이트 {job.updatedAt}</span>
           </div>
-          <span className={job.daysLeft <= 3 ? "text-warning-500 font-medium" : ""}>D-{job.daysLeft}</span>
+          <div className="flex items-center">
+            <span className={job.daysLeft <= 3 ? "text-warning-500 font-medium" : ""}>D-{job.daysLeft}</span>
+            {job.url && (
+              <a
+                href={job.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 text-primary-600 hover:text-primary-700"
+                aria-label="원본 공고 보기"
+              >
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
         </div>
       </CardContent>
     </Card>

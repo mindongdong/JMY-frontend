@@ -1,6 +1,5 @@
 import Header from "@/components/header"
 import Hero from "@/components/hero"
-import FilterBar from "@/components/filter-bar"
 import LatestJobs from "@/components/sections/latest-jobs"
 import ClosingSoon from "@/components/sections/closing-soon"
 import ThemeTabs from "@/components/sections/theme-tabs"
@@ -13,7 +12,6 @@ export default function Home() {
       <Header />
       <Hero />
       <div className="container mx-auto px-4 md:px-6 lg:px-8 pb-20">
-        <FilterBar />
         <div className="mt-8 space-y-16">
           <LatestJobs />
           <ClosingSoon />

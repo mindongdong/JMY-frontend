@@ -81,7 +81,7 @@ export default function FilterBar() {
   const selectedCount = Object.values(selectedFilters).reduce((acc, curr) => acc + curr.length, 0)
 
   return (
-    <div className="mt-8">
+    <div className="mb-6">
       {isMobile ? (
         <Sheet>
           <SheetTrigger asChild>
@@ -103,7 +103,7 @@ export default function FilterBar() {
           </SheetContent>
         </Sheet>
       ) : (
-        <div className="bg-white p-4 rounded-10 shadow-sm sticky top-16 z-40">
+        <div className="bg-white p-4 rounded-10 shadow-sm">
           <FilterContent />
         </div>
       )}

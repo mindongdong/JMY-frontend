@@ -32,6 +32,8 @@ export default function LatestJobs() {
       keywords: ["Python", "TensorFlow", "Computer Vision"],
       updatedAt: "2시간 전",
       daysLeft: 14,
+      source: "RNDJOB",
+      url: "https://example.com/job/1",
     },
     {
       id: 2,
@@ -42,6 +44,8 @@ export default function LatestJobs() {
       keywords: ["반도체", "공정설계", "물리학"],
       updatedAt: "3시간 전",
       daysLeft: 10,
+      source: "병역일터",
+      url: "https://example.com/job/2",
     },
     {
       id: 3,
@@ -52,6 +56,8 @@ export default function LatestJobs() {
       keywords: ["생명공학", "단백질공학", "분자생물학"],
       updatedAt: "5시간 전",
       daysLeft: 21,
+      source: "both",
+      url: "https://example.com/job/3",
     },
     {
       id: 4,
@@ -62,6 +68,8 @@ export default function LatestJobs() {
       keywords: ["로봇공학", "제어시스템", "C++"],
       updatedAt: "6시간 전",
       daysLeft: 7,
+      source: "RNDJOB",
+      url: "https://example.com/job/4",
     },
     {
       id: 5,
@@ -72,12 +80,14 @@ export default function LatestJobs() {
       keywords: ["Hadoop", "Spark", "데이터마이닝"],
       updatedAt: "12시간 전",
       daysLeft: 30,
+      source: "병역일터",
+      url: "https://example.com/job/5",
     },
   ]
 
   return (
     <section>
-      <SectionHeader title="최신 채용 공고" href="/latest" />
+      <SectionHeader title="최신 채용 공고" href="/jobs" />
 
       <div className="relative mt-4">
         <div ref={sliderRef} className="keen-slider">
