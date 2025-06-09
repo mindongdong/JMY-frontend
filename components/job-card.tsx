@@ -19,6 +19,7 @@ export type JobType = {
   isUrgent?: boolean
   source: JobSource
   url?: string
+  registrationDate?: string
 }
 
 interface JobCardProps {
